@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>회원 관리 폼</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<style>
+    *{list-style: none; margin: 0 auto; padding: 0;}
+    .wrong{display: none; padding: 5px 0; color: red;}
+    .wrong.active{display: block;}
+    body{background:rgba(209,209,209,1.00)}
+    form{width:300px; height: 48    0px; margin-top:20px;background: #fff;padding: 20px 0 20px 40px}
+    h1{width:300px; height: 100px; line-height: 100px; text-align: center;margin-top:50px;}
+    
+</style>
+
+</head>
+<body>
+<h1>회원가입</h1>
+<form class='gaip_form' method="post" action="insert.php">
+<ul>
+    <li>                                            
+        <div>
+            <label for='gaipId'>아이디<i>*</i></label>
+            <div class='fixedclear gaipIdWrap'> <!-- 이영역이 부모영역 relative -->
+                <div class='gaipId_wrap'>
+                    <!-- 이너비를 100% 하고 우측에 페딩 120px  -->
+                    <!-- box-sizing:border-box;  -->
+                    <input type='text' name='gaipId' id='gaipId' value='' placeholder='예 : marketkurly12'>
+                </div>
+                    <!-- 포지션 앱솔루트 우측에 정렬    -->
+                <div class='gaipId_CheckBtn_wrap'>
+                    <input type="button" value="중복확인" onClick="idCheck()">
+                </div>
+                <span class="wrong">필수 정보입니다.</span>
+            </div>
+        </div>
+    </li><!-- 아이디 -->
+    
+    <li>                                            
+        <div>
+            <label for='gaipPw'>비밀번호<i>*</i></label>
+            <div>
+                <input type='password' name='gaipPw' id='gaipPw' value='' placeholder='비밀번호를 입력하세요'>
+            </div>
+            <span class="wrong">필수 정보입니다.</span>
+        </div>
+    </li><!-- 비밀번호 -->
+    
+    <li>                                            
+        <div>
+            <label for='gaipPw2'>비밀번호 확인<i>*</i></label>
+            <div>
+                <input type='password' name='gaipPw2' id='gaipPw2' value='' placeholder='비밀번호를 한번 더 입력하세요'>
+            </div>
+            <span class="wrong">필수 정보입니다.</span>
+        </div>
+    </li><!-- 비밀번호 확인 -->
+    
+    <li>                                            
+        <div>
+            <label for='gaipName'>이름<i>*</i></label>
+            <div>
+                <input type='text' name='gaipName' id='gaipName' value='' placeholder='이름을 입력해 주세요'>
+            </div>
+            <span class="wrong">필수 정보입니다.</span>
+        </div>
+    </li><!-- 이름 -->
+    
+    <li>                                            
+        <div>
+        <label for='gaipEmail'>이메일<i>*</i></label>
+            <div>
+                <input type='email' name='gaipEmail' id='gaipEmail' value='' placeholder='예: marketkurly@kurly.com'>
+            </div>
+            <span class="wrong">필수 정보입니다.</span>
+        </div>
+    </li><!-- 이메일 -->
+    
+    <li>                                            
+        <div>
+            <label for='gaipHp'>휴대폰<i>*</i></label>
+            <div class='gaipHpWrap'>
+                <input type='text' name='gaipHp' id='gaipHp' value='' placeholder='숫자만 입력해주세요'>
+                <button class='gaipId_CheckBtn'>인증번호 받기</button>
+            </div>
+            <span class="wrong">필수 정보입니다.</span>
+        </div>
+    </li><!-- 휴대폰 -->
+    
+    <li>                                            
+        <div>
+            <label for='gaipAddr'>주소<i>*</i></label>
+            <div>
+                <input type='text' name='gaipAddr' id='gaipAddr' value='' placeholder='도로명, 지번, 건물명 검색'>
+            </div>
+            <span class="wrong">필수 정보입니다.</span>
+        </div>
+    </li><!-- 주소 -->
+    
+    
+    <li>
+        <div>
+            <h2>성별</h2>     <!--  라디오버튼은 동일한 name : 여러개중 단 한개만 선택 가능 -->
+            <div class='gender'>
+                <p>                                                           
+                    <input type='radio' name='gender_chk' id='male' class='gender_chk' value='남성'>
+                    <label for='male'>남자</label>
+                </p> 
+                <p>
+                    <input type='radio' name='gender_chk' id='feMale' class='gender_chk' value='여성'>
+                    <label for='feMale'>여자</label>
+                </p> 
+                <p>
+                    <input type='radio' name='gender_chk' id='unSelect' class='gender_chk' value='선택안함' checked>
+                    <label for='unSelect'>선택안함</label>
+                </p> 
+            </div>
+        </div>
+    </li> <!-- 성별 -->
+    
+    
+  
+
+<div class='gaipBtn_wrap'>
+    <button class='gaipBtn'>가입하기</button>
+</div>
+
+</form>
+
+</body>
+    <script>   
+
+    const idReg = /^[A-Za-z0-9_-]{5,10}$/;
+	const pwReg = /^[A-Za-z0-9!#$%^&*_-]{5,10}$/;
+	const nameReg = /^[A-Za-z가-힣]{2,10}$/;
+	const emailReg = /^[A-Za-z0-9!#$%^&*_-]+@[A-Za-z0-9_-]+(\.[A-Za-z0-9_-]+){1,2}$/;
+
+        // 빈값확인
+        
+        $('.gaipBtn').click(function(){
+			
+            if($('#gaipId').val().length == 0){
+                $('span').eq(0).addClass('active').text("필수 정보입니다.");
+                $('#gaipId').focus();
+				return false;
+            }
+			
+			else if(!idReg.test($('#gaipId').val())){
+				$('span').eq(0).addClass('active').text("영어, 숫자, 5~10글자만 허용");
+				$('#gaipId').focus();
+				return false;
+			}
+            
+
+            else if($('#gaipPw').val().length == 0){
+                $('span').eq(1).addClass('active');
+                $('#gaipPw').focus();
+				return false;
+            }
+            
+            
+            else if($('#gaipPw2').val().length == 0){
+                $('span').eq(2).addClass('active');
+                $('#gaipPw2').focus(); 
+				return false;
+            } 
+			
+			else if($('#gaipPw').val() != $('#gaipPw2').val()){
+                $('li:eq(2) .wrong').addClass('active').text('비밀번호가 일치하지 않습니다.');
+				$('#gaipPw2').focus(); 
+                return false; // 버튼 submit 기능 막기 
+                              // 값을 보내는 것을 못 하게 하겠다. 먼저 막아야 함.
+            }
+
+            else if($('#gaipName').val().length == 0){
+                $('span').eq(3).addClass('active');
+                $('#gaipName').focus();
+				return false;
+            }
+            
+            else if($('#gaipEmail').val().length == 0){
+                $('span').eq(4).addClass('active');
+                $('#gaipEmail').focus();
+				return false;
+            }
+            
+            else if($('#gaipHp').val().length == 0){
+                $('span').eq(5).addClass('active');
+                $('#gaipHp').focus();
+				return false;
+            }
+            
+            else if($('#gaipAddr').val().length == 0){
+                $('span').eq(6).addClass('active');
+                $('#gaipAddr').focus();
+				return false;
+            } else {
+				$('.gaip_form').submit();
+			}
+        });
+    
+      // blur시 확인  
+        $('#gaipId').blur(function(){
+            if($('#gaipId').val().length != 0){
+                $('span').eq(0).removeClass('active');
+            }
+        });
+        
+        
+        $('#gaipPw').blur(function(){
+            if($('#gaipPw').val().length != 0){
+                $('span').eq(1).removeClass('active');
+            }
+        });
+            
+        $('#gaipPw2').blur(function(){
+            if($('#gaipPw2').val().length != 0){
+                $('span').eq(2).removeClass('active');
+            }
+        });
+        
+        
+        $('#gaipName').blur(function(){
+            
+            if($('#gaipName').val().length != 0){
+                $('span').eq(3).removeClass('active');
+            }
+            
+        });
+            
+        $('#gaipEmail').blur(function(){
+            
+            if($('#gaipEmail').val().length != 0){
+                $('span').eq(4).removeClass('active');
+            }
+         
+        });
+        
+        $('#gaipHp').blur(function(){
+            
+            if($('#gaipHp').val().length != 0){
+                $('span').eq(5).removeClass('active');
+            }
+        
+        });
+        
+        $('#gaipAddr').blur(function(){
+            
+            if($('#gaipAddr').val().length != 0){
+                $('span').eq(6).removeClass('active');
+            }
+            
+        });
+
+		
+		function idCheck() {
+			$.ajax({
+				url: "ajax.php",
+				type: "GET",
+				data: {
+					a: $('#gaipId').val(),
+				}
+				
+			}).done(function(result){
+				$('span').eq(0).addClass('active').text(result);
+			});
+		}
+		
+    </script>
+</html>
+    
+    
+    
+    
+    

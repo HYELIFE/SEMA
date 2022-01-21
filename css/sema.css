@@ -1,0 +1,133 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+ @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&family=Noto+Sans+KR&display=swap');
+        
+*{margin:0 auto; padding: 0; list-style: none; text-decoration: none; font-family: 'Noto Sans KR', sans-serif;font-size:15px; }
+ 
+#skip{width: 100% ; height:50px; position:absolute;left:0; top:-50px;background: #999; text-align: center; line-height: 50px;}
+#skip a{display:block;position:absolute; left:0; top:-50px; }
+#skip a:focus{top:1150px}
+
+#header{width: 100%; height:130px; background: url("../img/header_bg.jpg"); }
+#header_wrap{width:1200px; height: 130px}
+      
+#header .gnb{float: left;width: 35%}
+#header .gnb ul{} 
+#header .gnb ul li{float: left;margin-top:30px; margin-right: 30px; }
+#header .gnb ul li a{float: left;color: #777777;font-size: 13px; }
+#header .gnb ul li a:hover{color:#946D41;}
+        
+        
+#header h1{float:left; width:30%;height:70px;text-align: center ;}
+#header h1 a{}
+#header h1 a img{height: 70px; padding-top: 5px; vertical-align: middle;}
+        
+        
+#header .icon {float: right; }
+#header .icon ul{float: left;}
+#header .icon ul li{float: left;margin-top:30px;margin-left:30px;}
+#header .icon ul li a{}
+#header .icon ul li a img{ width:20px; height: 20px;  transition:all 0.3s;}
+#header .icon ul li a img:hover{ transform:scale(1.3)}
+
+                                
+
+#header .nav{clear:both;}
+#header .nav ul{width: 942px;}
+#header .nav ul li{float:left; margin-top: 10px;} 
+#header .nav ul li a{ color:white; height: 50px; padding: 0 50px;
+line-height: 50px;}
+#header .nav ul li a:hover{color:rgba(199,178,157,1.00) ; }
+
+
+#main{width:1920px; height: 620px; position: relative;}
+#main .swiper-container{width: 100%; height: 620px;}
+#main .swiper-wrapper{}
+#main .swiper-wrapper .swiper-slide{}
+#main .slide1{background: url("../main poster/천경자.jpg") center center no-repeat; background-size: cover;}
+#main .slide2{background: url("../main poster/요괴.jpg")center center no-repeat; background-size: cover;}
+#main .slide3{background: url("../main poster/plant.jpg") center center no-repeat; background-size: cover;}
+#main .swiper-pagination{bottom:5px;}
+#main .swiper-pagination-bullet{width:15px; height:15px;background:#999; opacity: 1;}
+#main .swiper-pagination-bullet-active{width: 15px; height:15px;  background:
+rgba(139,119,89,1.00)}
+
+#exhibition{width:1920px;height:700px;}
+#exhibition h3{padding-top:50px;font-size:24px;text-align: center}
+#exhibition h4{margin-top:20px; font-size:18px;text-align: center}
+#exhibition .museum{margin-top:40px;width:942px;}
+#exhibition .museum li{float:left;margin:0 20px;}
+#exhibition .museum li a{color:black;}
+#exhibition .museum li a:hover{color:rgba(120,113,100,1.00)}
+
+#exhibition .ex{clear:both; margin-top:10px;margin-left:130px; 
+}
+#exhibition .ex li{float: left; 
+    margin-left: 155px;margin-top:40px;}
+#exhibition .ex li a{}
+#exhibition .ex li a img{width:330px;height:460px;    }
+
+#art{float:left;width:100%;height:620px; background:#f5f1e8}
+#art h3{text-align: center;font-size:24px;padding-top:50px;}
+#art h4{text-align: center;margin-top:20px;font-size:18px;}
+#art .arts{width:1200px;}
+
+
+#art .m{float:left;width:530px; height:355px;margin-top:50px;position: relative;margin-left: 50px;overflow: hidden;border-radius: 25px;}
+#art .m ul{width:8000px;position:absolute; left:-2650px}
+#art .m ul li{float:left;}
+#art .m ul li a{}
+#art .m ul li a img{border-radius: 25px; width:530px; height:355px;}
+
+#art .artright{float:right;width:30%;height:600px;margin-top:100px;margin-right:    50px;cursor: pointer}
+#art .artright .artr1{margin:40px 20px 0 0;background: rgba(128,119,98,1.00);width:200px;height:40px;line-height: 40px; text-align: center;font-size:20px;}
+#art .artright .artr2{margin:0px 20px 0 0;width:200px;height:40px; line-height: 40px;background:#D0C8C0; text-align: center;font-size:20px;}
+#art .artright 
+.artr2:hover{background:#fff;transition: 0.5s;}
+
+.dots{width:300px; height: 20px; position: relative; top:430px; left:-330px;}
+.dots span{display:block; float: left; width:20px; height: 20px; margin:0 5px; border-radius: 50%; background:#978D7C; cursor: pointer;}
+.dots span:first-of-type{background: #3A3127}
+
+
+
+
+#map{clear:both;;width: 1200px; height: 600px; background: #fff; position:relative;}
+#map h3{text-align: center;font-size:24px;padding-top:50px;}
+
+.buttons{width:300px;}
+.buttons li{width:300px;  position: absolute; height: 40px;line-height: 40px;     top:155px; left:150px; border: none; background:#BBB1A1; color:#fff;cursor: pointer; border-radius: 20px;text-align: center;}
+.buttons li:nth-of-type(2){top:205px; }
+.buttons li:nth-of-type(3){top:255px;}
+.buttons li:nth-of-type(4){top:305px;}
+.buttons li:nth-of-type(5){top:355px}
+.buttons li:nth-of-type(6){top:405px}
+.buttons li:nth-of-type(7){top:455px}
+.buttons li a{color: #fff    }
+.buttons li iframe{display:none;}
+#map .maps {width:500px;height: 350px;position:absolute; right:150px; top:150px;}
+#map .maps .map{width:500px;height: 350px;}
+
+#footer{clear:both;width:100%; height:400px;background:#5c534b;font-size: 13px;}
+#footer .inner{width:1200px;}
+#footer .inner .left{float: left; }
+#footer .inner .left .a1 a img{width:230px;height:130px;margin-top: 80px;}
+#footer .inner .left .a2 a img{width:230px;height: 40px;margin-top: 50px;}
+
+#footer .inner .right{float: right;position:relative;}
+#footer .inner .right .clear{height:50px; margin-top:100px;}
+#footer .inner .right .clear li{float: left;margin-right: 30px;}
+#footer .inner .right .clear li::before{content: "|";margin-right: 30px;}
+#footer .inner .right .clear li:first-of-type::before{content:"";margin-right: 0 }
+#footer .inner .right .clear li a {font-size: 14px;color:#fff;}
+
+#footer .inner .right .sema{width:50% ;float:left;}
+#footer .inner .right .sema address{font-size: 13px; font-style: normal;margin:30px 0 30px 0px; color:#fff;    }
+#footer .inner .right .sema p{;font-size: 13px; color:#fff;}
+
+#footer .inner .right .ficons{ float:right; margin:130px 30px 0 0;}
+#footer .inner .right .ficons li{float: left;margin : 0 5px;}
+#footer .inner .right .ficons li a 
+#footer .inner .right .ficons li a img{width:30px;}
